@@ -1,0 +1,25 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+    <h1>Post list</h1>
+    <hr />
+    {% if canAddPost() %}
+        <a href="{{ path_for('posts.create') }}" class="btn btn-primary">Add Post</a>
+    {%  endif %}
+    {% for post in posts %}
+        <article class="post">
+            {% if canEditPost(post) %}
+                <div class="pull-right">
+                    <form action="{{ path_for('posts.delete') }}" method="post">
+                        {{ csrf_field | raw }}
+                        <input type="hidden" name="id" value="{{ post.id }}">
+                        <input type="submit" value="Delete" class="btn btn-danger">
+                    </form>
+                </div>
+            {% endif %}
+            <h2>{{ post.title }}</h2>
+            <span class="meta">Posted by <a href="#" >{{ post.user.username }}</a></span>
+            <p>{{ post.content }}</p>
+        </article>
+    {% endfor %}
+{% endblock %}

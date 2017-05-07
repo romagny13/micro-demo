@@ -1,0 +1,19 @@
+{
+    "name": "romagny13/micro-demo",
+    "autoload":{
+        "psr-4":{
+            "App\\": "src",
+            "MicroPHP\\": "micro-php"
+        }
+    },
+    "require": {
+        "romagny13/php-validator": "^0.1.0",
+        "romagny13/csrf": "^0.0.1",
+        "romagny13/flash": "^0.0.1",
+        "romagny13/micro-php": "^0.2.1",
+        "romagny13/micro-db": "^0.0.2"
+    },
+    "scripts": {
+        "start": "php -S localhost:8080 -t public"
+    }
+}
